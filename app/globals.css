@@ -1,3 +1,23 @@
+/* reset or 기본 값들이 들어있는 directives */
 @tailwind base;
 @tailwind components;
+/* 유틸리티 클래스 네임 저장소 */
 @tailwind utilities;
+
+@layer base {
+  a {
+    @apply text-red-400;
+  }
+}
+
+@layer utilities {
+  .text-bigger-hello {
+    @apply text-3xl font-bold;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply w-full h-10 bg-red-400 text-white px-4 py-2 rounded-full;
+  }
+}
