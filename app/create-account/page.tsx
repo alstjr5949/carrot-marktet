@@ -17,24 +17,28 @@ export default function CreateAccount() {
           placeholder="Username"
           required={true}
           errors={[]}
+          name="username"
         />
         <FormInput
           type="email"
           placeholder="Email"
           required={true}
           errors={[]}
+          name="email"
         />
         <FormInput
           type="password"
           placeholder="Password"
           required={true}
           errors={[]}
+          name="password"
         />
         <FormInput
           type="password"
           placeholder="Confirm Password"
           required={true}
           errors={[]}
+          name="confirmPassword"
         />
         <FormButton text="Create Account" loading={false} />
       </form>
