@@ -1,5 +1,7 @@
 import Link from "next/link";
 import ChatIcon from "../icon/chat-icon";
+import FormInput from "../components/form-input";
+import FormButton from "../components/form-button";
 
 export default function CreateAccount() {
   return (
@@ -11,16 +13,31 @@ export default function CreateAccount() {
         </h2>
       </div>
       <form className="flex flex-col gap-3">
-        <div className="flex flex-col gap-2">
-          <input
-            className="w-full h-10 bg-transparent rounded-md p-2 focus:outline-none ring-1 focus:ring-2 ring-neutral-200 focus:ring-orange-500 border-none placeholder:text-neutral-400"
-            type="text"
-            placeholder="Username"
-            required
-          />
-          <span className="text-red-500 font-medium">Input Error</span>
-        </div>
-        <button className="btn-primary py-2">Create Account</button>
+        <FormInput
+          type="text"
+          placeholder="Username"
+          required={true}
+          errors={[]}
+        />
+        <FormInput
+          type="email"
+          placeholder="Email"
+          required={true}
+          errors={[]}
+        />
+        <FormInput
+          type="password"
+          placeholder="Password"
+          required={true}
+          errors={[]}
+        />
+        <FormInput
+          type="password"
+          placeholder="Confirm Password"
+          required={true}
+          errors={[]}
+        />
+        <FormButton text="Create Account" loading={false} />
       </form>
       <div className="w-full h-px bg-neutral-500" />
       <div>
