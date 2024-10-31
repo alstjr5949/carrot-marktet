@@ -1,7 +1,6 @@
-import Link from "next/link";
-import ChatIcon from "../icon/chat-icon";
-import FormInput from "../components/form-input";
-import FormButton from "../components/form-button";
+import FormInput from "@/components/form-input";
+import FormButton from "@/components/form-button";
+import SocialLogin from "@/components/social-login";
 
 export default function CreateAccount() {
   return (
@@ -40,17 +39,7 @@ export default function CreateAccount() {
         <FormButton text="Create Account" loading={false} />
       </form>
       <div className="w-full h-px bg-neutral-500" />
-      <div>
-        <Link
-          className="btn-primary h-10 flex items-center justify-center gap-3"
-          href="/sms"
-        >
-          <span>
-            <ChatIcon />
-          </span>
-          <span>Sign up with SMS</span>
-        </Link>
-      </div>
+      <SocialLogin />
     </div>
   );
 }
