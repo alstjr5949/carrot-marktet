@@ -1,8 +1,19 @@
+"use client";
+
 import FormInput from "@/components/form-input";
 import FormButton from "@/components/form-button";
 import SocialLogin from "@/components/social-login";
 
 export default function Login() {
+  const onClick = async () => {
+    const response = await fetch("/api/users", {
+      method: "POST",
+      body: JSON.stringify({ email: "test@test.com", password: "test" }),
+    });
+
+    console.log(await response.json());
+  };
+
   return (
     <div className="flex flex-col gap-10 p-6">
       <div className="flex flex-col gap-2 *:font-medium">
@@ -22,8 +33,10 @@ export default function Login() {
           required={true}
           errors={[]}
         />
-        <FormButton text="Login" loading={false} />
       </form>
+      <span onClick={onClick}>
+        <FormButton text="Login" loading={false} />
+      </span>
       <div className="w-full h-px bg-neutral-500" />
       <SocialLogin />
     </div>
