@@ -40,7 +40,7 @@ export default function CreateAccount() {
           errors={[]}
           name="confirmPassword"
         />
-        <FormButton text="Create Account" loading={false} />
+        <FormButton text="Create Account" />
       </form>
       <div className="w-full h-px bg-neutral-500" />
       <SocialLogin />

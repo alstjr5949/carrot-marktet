@@ -30,7 +30,7 @@ export default function Login() {
           errors={[]}
           name="password"
         />
-        <FormButton text="Login" loading={false} />
+        <FormButton text="Login" />
       </form>
       <div className="w-full h-px bg-neutral-500" />
       <SocialLogin />
