@@ -1,12 +1,14 @@
 import FormInput from "@/components/form-input";
 import FormButton from "@/components/form-button";
 import SocialLogin from "@/components/social-login";
+import { redirect } from "next/navigation";
 
 export default function Login() {
   const handleFormSubmit = async (formData: FormData) => {
     "use server";
 
     console.log(formData.get("email"), formData.get("password"));
+    redirect("/");
   };
 
   return (
