@@ -8,5 +8,6 @@ const config: Config = {
   ],
   theme: {},
   plugins: [require("@tailwindcss/forms")],
+  darkMode: "media", // class, media, false
 };
 export default config;
