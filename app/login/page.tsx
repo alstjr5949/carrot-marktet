@@ -1,15 +1,13 @@
+"use client";
+
 import FormInput from "@/components/form-input";
 import FormButton from "@/components/form-button";
 import SocialLogin from "@/components/social-login";
-import { redirect } from "next/navigation";
+import { handleFormSubmit } from "./actions";
+import { useActionState } from "react";
 
 export default function Login() {
-  const handleFormSubmit = async (formData: FormData) => {
-    "use server";
-
-    console.log(formData.get("email"), formData.get("password"));
-    redirect("/");
-  };
+  const [state, formAction] = useActionState(handleFormSubmit, null);
 
   return (
     <div className="flex flex-col gap-10 p-6">
@@ -17,7 +15,7 @@ export default function Login() {
         <h1 className="text-2xl">안녕하세요!</h1>
         <h2 className="text-xl">Login to your account.</h2>
       </div>
-      <form action={handleFormSubmit} className="flex flex-col gap-3">
+      <form action={formAction} className="flex flex-col gap-3">
         <FormInput
           type="email"
           placeholder="Email"
@@ -29,7 +27,7 @@ export default function Login() {
           type="password"
           placeholder="Password"
           required={true}
-          errors={[]}
+          errors={state?.errors ?? []}
           name="password"
         />
         <FormButton text="Login" />
