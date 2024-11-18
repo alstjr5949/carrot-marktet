@@ -2,9 +2,12 @@
 
 import { z } from "zod";
 
-const usernameSchema = z.string().min(5).max(10);
-const emailSchema = z.string().email();
-const passwordSchema = z.string().min(8);
+const formSchema = z.object({
+  username: z.string().min(3).max(10),
+  email: z.string().email(),
+  password: z.string().min(10),
+  confirmPassword: z.string().min(10),
+});
 
 export async function createAccount(prevState: any, formData: FormData) {
   const data = {
@@ -14,9 +17,9 @@ export async function createAccount(prevState: any, formData: FormData) {
     confirmPassword: formData.get("confirmPassword"),
   };
 
-  usernameSchema.parse(data.username);
-  emailSchema.parse(data.email);
-  passwordSchema.parse(data.password);
+  const validationResult = formSchema.safeParse(data);
 
-  console.log(data);
+  if (!validationResult.success) {
+    return { errors: validationResult.error.flatten().fieldErrors };
+  }
 }
